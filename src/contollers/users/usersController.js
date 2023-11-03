@@ -79,7 +79,7 @@ const loginUser = async(req,res)=>{
             await sessionData.save();
 
             // Respond with a 200 status and a "Login successful" message, along with the session data
-            res.status(200).send({message:"Login successful",session:sessionData})
+            res.status(200).send({message:"Login successful",user:user,session:sessionData})
         }
     });
 };
