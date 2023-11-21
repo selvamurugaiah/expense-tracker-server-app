@@ -35,17 +35,25 @@ const addIncome = async(req,res)=>{
     console.log(income)
  }
  
- const getIncomes = async(req,res)=>{
-  
-   const {page} = req.query;
-     try {
-         const incomes = await IncomeSchema.paginate({},{limit:10, page:Number(page),
-        populate:"user"})
-         res.status(200).json(incomes)
-     } catch (error) {
-         res.status(500).json({message:'Server Error', error: error})
-     }
- }
+ const getIncomes = async (req, res) => {
+  const { page, userId } = req.query;
+
+  try {
+    
+    const filter = userId ? { user: userId } : {};
+
+    const incomes = await IncomeSchema.paginate(filter, {
+      limit: 10,
+      page: Number(page),
+      populate: "user",
+    });
+
+    res.status(200).json(incomes);
+  } catch (error) {
+    res.status(500).json({ message: 'Server Error', error: error });
+  }
+};
+
 
 
   const income = async (req, res) => {

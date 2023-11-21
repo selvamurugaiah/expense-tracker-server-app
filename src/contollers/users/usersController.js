@@ -39,10 +39,9 @@ const createUser = async (req,res)=>{
             
         } catch (error) {
 
-            console.log(error);
-
+            
             //If there's an error, respond with a status code 500
-            res.status(500).send({message:"User already exists"})
+            res.status(500).send({message:"User already exists",error})
             
         }
     });
