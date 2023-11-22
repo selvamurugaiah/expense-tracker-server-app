@@ -11,7 +11,6 @@ const ExpenseSchema = new mongoose.Schema({
     amount:{
         type:Number,
         required:[true, "Amount is required"],
-        maxLength:100,
         trim:true
     },
     type:{
